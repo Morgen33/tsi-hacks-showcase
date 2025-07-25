@@ -14,7 +14,7 @@ export const CategoryFilter = ({ categories, selectedCategory, onCategoryChange 
         onClick={() => onCategoryChange("all")}
         className={`${
           selectedCategory === "all"
-            ? "bg-gradient-neon text-primary-foreground neon-glow"
+            ? "bg-neon-purple text-primary-foreground"
             : "border-border text-foreground hover:border-neon-purple hover:text-neon-purple"
         } transition-all duration-300`}
       >
@@ -27,7 +27,7 @@ export const CategoryFilter = ({ categories, selectedCategory, onCategoryChange 
           onClick={() => onCategoryChange(category)}
           className={`${
             selectedCategory === category
-              ? "bg-gradient-neon text-primary-foreground neon-glow"
+              ? "bg-neon-purple text-primary-foreground"
               : "border-border text-foreground hover:border-neon-purple hover:text-neon-purple"
           } transition-all duration-300`}
         >

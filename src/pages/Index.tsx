@@ -78,7 +78,7 @@ const Index = () => {
               </div>
             </div>
             
-            <h1 className="text-6xl md:text-8xl font-bold bg-gradient-neon bg-clip-text text-transparent text-glow animate-float">
+            <h1 className="text-6xl md:text-8xl font-bold text-foreground animate-float">
               PROJECT
               <br />
               DIRECTORY
@@ -92,7 +92,8 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 onClick={() => setShowForm(true)}
-                className="bg-gradient-neon hover:opacity-90 text-primary-foreground font-bold px-8 py-3 text-lg neon-glow transition-all duration-300"
+                variant="outline"
+                className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground px-8 py-3 text-lg transition-all duration-300"
               >
                 <Code2 className="w-5 h-5 mr-2" />
                 Submit Your Project
@@ -158,7 +159,7 @@ const Index = () => {
       <div id="projects" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-8 mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-secondary bg-clip-text text-transparent text-glow">
+            <h2 className="text-4xl md:text-6xl font-bold text-foreground">
               Featured Projects
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -210,7 +211,7 @@ const Index = () => {
               />
               <div className="flex items-center gap-2">
                 <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
-                <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
+                <span className="text-xl font-bold text-foreground">
                   TSI HACKATHON 2025
                 </span>
               </div>

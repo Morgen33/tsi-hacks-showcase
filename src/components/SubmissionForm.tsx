@@ -100,7 +100,7 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
   return (
     <Card className="w-full max-w-2xl mx-auto border-border bg-card backdrop-blur-sm">
       <CardHeader className="text-center">
-        <CardTitle className="text-3xl font-bold bg-gradient-neon bg-clip-text text-transparent text-glow">
+        <CardTitle className="text-3xl font-bold text-foreground">
           Submit Your Project
         </CardTitle>
       </CardHeader>
@@ -214,7 +214,8 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
 
           <Button 
             type="submit" 
-            className="w-full bg-gradient-neon hover:opacity-90 transition-all duration-300 text-primary-foreground font-bold py-3 text-lg neon-glow animate-pulse-glow"
+            variant="outline"
+            className="w-full border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground font-bold py-3 text-lg transition-all duration-300"
           >
             Submit Project
           </Button>

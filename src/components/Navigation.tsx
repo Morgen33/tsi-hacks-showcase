@@ -26,7 +26,7 @@ export const Navigation = ({ onSubmitClick }: NavigationProps) => {
               className="w-10 h-10 object-contain"
             />
             <div className="flex flex-col">
-              <span className="text-lg font-bold bg-gradient-neon bg-clip-text text-transparent">
+              <span className="text-lg font-bold text-foreground">
                 TSI HACKATHON 2025
               </span>
               <span className="text-xs text-muted-foreground -mt-1">
@@ -46,7 +46,8 @@ export const Navigation = ({ onSubmitClick }: NavigationProps) => {
             </Button>
             <Button 
               onClick={onSubmitClick}
-              className="bg-gradient-neon hover:opacity-90 text-primary-foreground font-medium px-6 transition-all duration-300"
+              variant="outline"
+              className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground font-medium px-6 transition-all duration-300"
             >
               <Code2 className="w-4 h-4 mr-2" />
               Submit Project
@@ -80,7 +81,8 @@ export const Navigation = ({ onSubmitClick }: NavigationProps) => {
                   onSubmitClick();
                   setIsMenuOpen(false);
                 }}
-                className="justify-start bg-gradient-neon hover:opacity-90 text-primary-foreground font-medium transition-all duration-300"
+                variant="outline"
+                className="justify-start border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground font-medium transition-all duration-300"
               >
                 <Code2 className="w-4 h-4 mr-2" />
                 Submit Project
