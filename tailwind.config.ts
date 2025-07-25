@@ -52,6 +52,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				neon: {
+					purple: 'hsl(var(--neon-purple))',
+					pink: 'hsl(var(--neon-pink))',
+					blue: 'hsl(var(--neon-blue))',
+					green: 'hsl(var(--neon-green))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -84,13 +90,52 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						opacity: '1',
+						filter: 'drop-shadow(0 0 5px currentColor)'
+					},
+					'50%': {
+						opacity: '0.8',
+						filter: 'drop-shadow(0 0 15px currentColor)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities }: any) {
+			const newUtilities = {
+				'.text-glow': {
+					'text-shadow': '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor'
+				},
+				'.neon-glow': {
+					'box-shadow': '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor'
+				},
+				'.bg-gradient-neon': {
+					'background': 'var(--gradient-primary)'
+				},
+				'.bg-gradient-secondary': {
+					'background': 'var(--gradient-secondary)'
+				}
+			}
+			addUtilities(newUtilities)
+		}
+	]
 } satisfies Config;

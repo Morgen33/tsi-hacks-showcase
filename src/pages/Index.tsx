@@ -1,12 +1,200 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { SubmissionForm } from "@/components/SubmissionForm";
+import { ProjectCard } from "@/components/ProjectCard";
+import { CategoryFilter } from "@/components/CategoryFilter";
+import { Button } from "@/components/ui/button";
+import { Code2, Zap, Users, Trophy } from "lucide-react";
+import heroBanner from "@/assets/hero-banner.jpg";
+
+interface Project {
+  id: string;
+  name: string;
+  siteUrl: string;
+  description: string;
+  category: string;
+  imageUrl?: string;
+}
 
 const Index = () => {
+  const [projects, setProjects] = useState<Project[]>([
+    {
+      id: "1",
+      name: "Morgen Victoria",
+      siteUrl: "https://boinkme.xyz/",
+      description: "A dating/networking platform for Web3 people. Our ai matches you up with like minded people.",
+      category: "Web3/Blockchain",
+      imageUrl: ""
+    }
+  ]);
+  
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [showForm, setShowForm] = useState(false);
+
+  const categories = [...new Set(projects.map(p => p.category))];
+  
+  const filteredProjects = selectedCategory === "all" 
+    ? projects 
+    : projects.filter(p => p.category === selectedCategory);
+
+  const handleSubmit = (submission: Omit<Project, "id">) => {
+    const newProject: Project = {
+      ...submission,
+      id: Date.now().toString()
+    };
+    setProjects([...projects, newProject]);
+    setShowForm(false);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBanner})` }}
+        />
+        <div className="absolute inset-0 bg-background/80" />
+        
+        <div className="relative container mx-auto px-4 py-20">
+          <div className="text-center space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 backdrop-blur-sm border border-neon-purple/30">
+              <Zap className="w-5 h-5 text-neon-purple animate-pulse-glow" />
+              <span className="text-neon-purple font-medium">TSI HACKATHON 2024</span>
+            </div>
+            
+            <h1 className="text-6xl md:text-8xl font-bold bg-gradient-neon bg-clip-text text-transparent text-glow animate-float">
+              PROJECT
+              <br />
+              DIRECTORY
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Discover amazing projects built by TSI Hackathon participants. 
+              Showcase your innovation and explore what others have created.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={() => setShowForm(true)}
+                className="bg-gradient-neon hover:opacity-90 text-primary-foreground font-bold px-8 py-3 text-lg neon-glow transition-all duration-300"
+              >
+                <Code2 className="w-5 h-5 mr-2" />
+                Submit Your Project
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground px-8 py-3 text-lg transition-all duration-300"
+              >
+                <Trophy className="w-5 h-5 mr-2" />
+                View Projects
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Stats Section */}
+      <div className="py-16 bg-card/30 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="space-y-2">
+              <div className="text-4xl font-bold text-neon-purple text-glow">
+                {projects.length}
+              </div>
+              <div className="text-muted-foreground">Projects Submitted</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-4xl font-bold text-neon-pink text-glow">
+                {categories.length}
+              </div>
+              <div className="text-muted-foreground">Categories</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-4xl font-bold text-neon-blue text-glow">
+                <Users className="w-10 h-10 mx-auto mb-2" />
+              </div>
+              <div className="text-muted-foreground">Amazing Builders</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Submission Form */}
+      {showForm && (
+        <div className="py-20 bg-gradient-to-b from-background to-card/50">
+          <div className="container mx-auto px-4">
+            <SubmissionForm onSubmit={handleSubmit} />
+            <div className="text-center mt-8">
+              <Button 
+                variant="ghost" 
+                onClick={() => setShowForm(false)}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Projects Section */}
+      <div id="projects" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-8 mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-secondary bg-clip-text text-transparent text-glow">
+              Featured Projects
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Explore innovative solutions built during the TSI Hackathon
+            </p>
+          </div>
+
+          {/* Category Filter */}
+          <div className="mb-12">
+            <CategoryFilter 
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+            />
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-16">
+              <Code2 className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
+              <h3 className="text-2xl font-bold text-foreground mb-2">No projects found</h3>
+              <p className="text-muted-foreground">
+                {selectedCategory === "all" 
+                  ? "Be the first to submit a project!" 
+                  : `No projects in ${selectedCategory} category yet.`
+                }
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="py-12 bg-card border-t border-border">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
+            <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
+              TSI HACKATHON
+            </span>
+          </div>
+          <p className="text-muted-foreground">
+            Showcasing innovation and creativity from the tech community
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
