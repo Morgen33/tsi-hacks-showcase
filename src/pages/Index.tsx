@@ -13,6 +13,7 @@ interface Project {
   description: string;
   category: string;
   imageUrl?: string;
+  imageFile?: File;
 }
 
 const Index = () => {

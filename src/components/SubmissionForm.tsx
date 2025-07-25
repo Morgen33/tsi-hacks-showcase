@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,13 +6,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { Upload, X, Image as ImageIcon } from "lucide-react";
 
 interface Submission {
   name: string;
   siteUrl: string;
   description: string;
   category: string;
-  imageUrl: string;
+  imageFile?: File;
+  imageUrl?: string;
 }
 
 interface SubmissionFormProps {
@@ -33,13 +35,45 @@ const categories = [
 ];
 
 export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [formData, setFormData] = useState<Submission>({
     name: "",
     siteUrl: "",
     description: "",
     category: "",
-    imageUrl: ""
   });
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        toast.error("Image must be smaller than 5MB");
+        return;
+      }
+      
+      if (!file.type.startsWith('image/')) {
+        toast.error("Please upload an image file");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        setImagePreview(result);
+        setFormData({ ...formData, imageFile: file, imageUrl: result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = () => {
+    setImagePreview(null);
+    setFormData({ ...formData, imageFile: undefined, imageUrl: undefined });
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,8 +89,11 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
       siteUrl: "",
       description: "",
       category: "",
-      imageUrl: ""
     });
+    setImagePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
     toast.success("Project submitted successfully!");
   };
 
@@ -115,17 +152,50 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="imageUrl" className="text-foreground font-medium">
-              Project Image URL
+            <Label className="text-foreground font-medium">
+              Project Image
             </Label>
-            <Input
-              id="imageUrl"
-              type="url"
-              value={formData.imageUrl}
-              onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-              placeholder="https://example.com/image.jpg"
-              className="bg-input border-border focus:border-neon-purple focus:ring-neon-purple"
-            />
+            
+            {!imagePreview ? (
+              <div className="border-2 border-dashed border-border hover:border-neon-purple transition-colors rounded-lg p-8 text-center bg-input/50">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="w-full h-full flex flex-col items-center gap-3 text-muted-foreground hover:text-neon-purple transition-colors"
+                >
+                  <Upload className="w-8 h-8" />
+                  <div>
+                    <div className="font-medium">Click to upload image</div>
+                    <div className="text-sm">PNG, JPG up to 5MB</div>
+                  </div>
+                </Button>
+              </div>
+            ) : (
+              <div className="relative border border-border rounded-lg overflow-hidden bg-card">
+                <img
+                  src={imagePreview}
+                  alt="Project preview"
+                  className="w-full h-48 object-cover"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={removeImage}
+                  className="absolute top-2 right-2 bg-background/80 hover:bg-background text-foreground hover:text-destructive transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+            )}
           </div>
 
           <div className="space-y-2">
