@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Navigation } from "@/components/Navigation";
 import { SubmissionForm } from "@/components/SubmissionForm";
 import { ProjectCard } from "@/components/ProjectCard";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { Button } from "@/components/ui/button";
-import { Code2, Zap, Users, Trophy } from "lucide-react";
+import { Code2, Zap, Users, Trophy, ExternalLink } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
 
 interface Project {
@@ -48,8 +49,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <Navigation onSubmitClick={() => setShowForm(true)} />
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden pt-16">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroBanner})` }}
@@ -58,9 +61,17 @@ const Index = () => {
         
         <div className="relative container mx-auto px-4 py-20">
           <div className="text-center space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 backdrop-blur-sm border border-neon-purple/30">
-              <Zap className="w-5 h-5 text-neon-purple animate-pulse-glow" />
-              <span className="text-neon-purple font-medium">TSI HACKATHON 2024</span>
+            {/* TSI Logo + Hackathon Badge */}
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <img 
+                src="/lovable-uploads/b1367f8e-0df3-4cc9-bb73-ab9cd6a9069c.png" 
+                alt="TSI Logo" 
+                className="w-16 h-16 object-contain animate-float"
+              />
+              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card/50 backdrop-blur-sm border border-neon-purple/30">
+                <Zap className="w-5 h-5 text-neon-purple animate-pulse-glow" />
+                <span className="text-neon-purple font-medium text-lg">HACKATHON 2024</span>
+              </div>
             </div>
             
             <h1 className="text-6xl md:text-8xl font-bold bg-gradient-neon bg-clip-text text-transparent text-glow animate-float">
@@ -184,16 +195,59 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="py-12 bg-card border-t border-border">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
-            <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
-              TSI HACKATHON
-            </span>
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-6">
+            {/* TSI Logo + Brand */}
+            <div className="flex items-center justify-center gap-3">
+              <img 
+                src="/lovable-uploads/b1367f8e-0df3-4cc9-bb73-ab9cd6a9069c.png" 
+                alt="TSI Logo" 
+                className="w-8 h-8 object-contain"
+              />
+              <div className="flex items-center gap-2">
+                <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
+                <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
+                  TSI HACKATHON
+                </span>
+              </div>
+            </div>
+            
+            <p className="text-muted-foreground max-w-md mx-auto">
+              Showcasing innovation and creativity from the tech community. 
+              Built by developers, for developers.
+            </p>
+            
+            {/* Footer Links */}
+            <div className="flex items-center justify-center gap-6 text-sm">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-muted-foreground hover:text-neon-purple transition-colors"
+              >
+                Browse Projects
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => setShowForm(true)}
+                className="text-muted-foreground hover:text-neon-purple transition-colors"
+              >
+                Submit Project
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                asChild
+                className="text-muted-foreground hover:text-neon-purple transition-colors"
+              >
+                <a href="https://tsi.org" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                  Visit TSI
+                </a>
+              </Button>
+            </div>
           </div>
-          <p className="text-muted-foreground">
-            Showcasing innovation and creativity from the tech community
-          </p>
         </div>
       </footer>
     </div>
