@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ExternalLink, User } from "lucide-react";
 
 interface Project {
@@ -50,16 +52,29 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
       
       <CardContent className="space-y-4">
         {project.imageUrl && (
-          <div className="relative overflow-hidden rounded-lg aspect-video bg-muted">
-            <img
-              src={project.imageUrl}
-              alt={`${project.name} project`}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-          </div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <div className="relative overflow-hidden rounded-lg aspect-video bg-muted cursor-pointer">
+                <img
+                  src={project.imageUrl}
+                  alt={`${project.name} project`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl max-h-[90vh] p-0 bg-background border-neon-purple">
+              <div className="relative">
+                <img
+                  src={project.imageUrl}
+                  alt={`${project.name} project - full size`}
+                  className="w-full h-auto max-h-[85vh] object-contain"
+                />
+              </div>
+            </DialogContent>
+          </Dialog>
         )}
         
         <p className="text-muted-foreground leading-relaxed text-sm">
