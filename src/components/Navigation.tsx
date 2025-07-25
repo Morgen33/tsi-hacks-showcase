@@ -22,7 +22,7 @@ export const Navigation = ({
             <img src="/lovable-uploads/ed720235-4972-4f7d-8bd2-2c1b207c3111.png" alt="TSI Logo" className="w-10 h-10 object-contain" />
             <div className="flex flex-col">
               
-              <span className="text-xs text-muted-foreground -mt-1">
+              <span className="text-xs text-muted-foreground -mt-1 bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
                 Project Directory
               </span>
             </div>

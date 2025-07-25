@@ -90,20 +90,20 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-4xl font-bold text-neon-purple text-glow">
+              <div className="text-4xl font-bold text-neon-purple text-glow animate-pulse-glow">
                 {projects.length}
               </div>
               <div className="text-muted-foreground">Projects Submitted</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl font-bold text-neon-pink text-glow">
+              <div className="text-4xl font-bold text-neon-pink text-glow animate-pulse-glow">
                 {categories.length}
               </div>
               <div className="text-muted-foreground">Categories</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl font-bold text-neon-blue text-glow">
-                <Users className="w-10 h-10 mx-auto mb-2" />
+              <div className="text-4xl font-bold text-neon-blue text-glow animate-pulse-glow">
+                <Users className="w-10 h-10 mx-auto mb-2 text-neon-blue" />
               </div>
               <div className="text-muted-foreground">Amazing Builders</div>
             </div>
