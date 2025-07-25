@@ -61,16 +61,20 @@ const Index = () => {
         
         <div className="relative container mx-auto px-4 py-20">
           <div className="text-center space-y-8">
-            {/* TSI Logo + Hackathon Badge */}
-            <div className="flex items-center justify-center gap-4 mb-8">
+            {/* Large TSI Logo */}
+            <div className="flex justify-center mb-8">
               <img 
                 src="/lovable-uploads/b1367f8e-0df3-4cc9-bb73-ab9cd6a9069c.png" 
                 alt="TSI Logo" 
-                className="w-16 h-16 object-contain animate-float"
+                className="w-32 h-32 md:w-40 md:h-40 object-contain animate-float drop-shadow-2xl"
               />
-              <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-card/50 backdrop-blur-sm border border-neon-purple/30">
-                <Zap className="w-5 h-5 text-neon-purple animate-pulse-glow" />
-                <span className="text-neon-purple font-medium text-lg">HACKATHON 2024</span>
+            </div>
+            
+            {/* TSI Badge */}
+            <div className="flex justify-center">
+              <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-card/50 backdrop-blur-sm border border-neon-purple/30 shadow-lg">
+                <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
+                <span className="text-neon-purple font-bold text-xl tracking-wide">TSI</span>
               </div>
             </div>
             
