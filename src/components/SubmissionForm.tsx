@@ -117,13 +117,13 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-foreground font-medium">
-              Your Name *
+              Project Name *
             </Label>
             <Input
               id="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              placeholder="Enter your full name"
+              placeholder="Enter your project name"
               className="bg-input border-border focus:border-neon-purple focus:ring-neon-purple"
             />
           </div>

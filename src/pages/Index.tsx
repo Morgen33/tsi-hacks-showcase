@@ -18,11 +18,11 @@ interface Project {
 const Index = () => {
   const [projects, setProjects] = useState<Project[]>([{
     id: "1",
-    name: "Morgen Victoria",
+    name: "BOINK",
     siteUrl: "https://boinkme.xyz/",
     description: "A dating/networking platform for Web3 people. Our ai matches you up with like minded people.",
     category: "Web3/Blockchain",
-    imageUrl: ""
+    imageUrl: "/lovable-uploads/946b12de-11b6-45f6-ba28-fa6e7515d1f0.png"
   }]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [showForm, setShowForm] = useState(false);
