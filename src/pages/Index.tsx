@@ -51,7 +51,7 @@ const Index = () => {
           <div className="text-center space-y-8">
             {/* Large TSI Logo */}
             <div className="flex justify-center mb-8">
-              <img src="/lovable-uploads/b1367f8e-0df3-4cc9-bb73-ab9cd6a9069c.png" alt="TSI Logo" className="w-32 h-32 md:w-40 md:h-40 object-contain animate-float drop-shadow-2xl" />
+              <img src="/lovable-uploads/ed720235-4972-4f7d-8bd2-2c1b207c3111.png" alt="TSI Logo" className="w-32 h-32 md:w-40 md:h-40 object-contain animate-float drop-shadow-2xl" />
             </div>
             
             {/* TSI Badge */}
@@ -161,7 +161,7 @@ const Index = () => {
           <div className="text-center space-y-6">
             {/* TSI Logo + Brand */}
             <div className="flex items-center justify-center gap-3">
-              <img src="/lovable-uploads/b1367f8e-0df3-4cc9-bb73-ab9cd6a9069c.png" alt="TSI Logo" className="w-8 h-8 object-contain" />
+              <img src="/lovable-uploads/ed720235-4972-4f7d-8bd2-2c1b207c3111.png" alt="TSI Logo" className="w-8 h-8 object-contain" />
               <div className="flex items-center gap-2">
                 
                 <span className="text-xl font-bold text-foreground">

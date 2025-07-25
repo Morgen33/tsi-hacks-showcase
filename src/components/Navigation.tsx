@@ -19,7 +19,7 @@ export const Navigation = ({
         <div className="flex items-center justify-between h-16">
           {/* TSI Logo and Brand */}
           <div className="flex items-center gap-3">
-            <img src="/lovable-uploads/b1367f8e-0df3-4cc9-bb73-ab9cd6a9069c.png" alt="TSI Logo" className="w-10 h-10 object-contain" />
+            <img src="/lovable-uploads/ed720235-4972-4f7d-8bd2-2c1b207c3111.png" alt="TSI Logo" className="w-10 h-10 object-contain" />
             <div className="flex flex-col">
               
               <span className="text-xs text-muted-foreground -mt-1">
