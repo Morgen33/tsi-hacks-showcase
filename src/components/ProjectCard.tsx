@@ -33,7 +33,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   };
 
   return (
-    <Card className="group bg-card border-border hover:border-neon-purple transition-all duration-500 hover:shadow-lg hover:shadow-neon-purple/20 backdrop-blur-sm animate-float">
+    <Card className="group bg-card border-border hover:border-neon-purple transition-all duration-500 hover:shadow-lg hover:shadow-neon-purple/20 backdrop-blur-sm">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2">

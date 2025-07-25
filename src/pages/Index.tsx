@@ -74,7 +74,7 @@ const Index = () => {
             <div className="flex justify-center">
               <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-card/50 backdrop-blur-sm border border-neon-purple/30 shadow-lg">
                 <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
-                <span className="text-neon-purple font-bold text-xl tracking-wide">TSI</span>
+                <span className="text-neon-purple font-bold text-xl tracking-wide">TSI HACKATHON 2025</span>
               </div>
             </div>
             
@@ -111,7 +111,7 @@ const Index = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="py-16 bg-card/30 backdrop-blur-sm">
+      <div className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
@@ -138,7 +138,7 @@ const Index = () => {
 
       {/* Submission Form */}
       {showForm && (
-        <div className="py-20 bg-gradient-to-b from-background to-card/50">
+        <div className="py-20">
           <div className="container mx-auto px-4">
             <SubmissionForm onSubmit={handleSubmit} />
             <div className="text-center mt-8">
@@ -155,14 +155,14 @@ const Index = () => {
       )}
 
       {/* Projects Section */}
-      <div id="projects" className="py-20 bg-background">
+      <div id="projects" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-8 mb-16">
             <h2 className="text-4xl md:text-6xl font-bold bg-gradient-secondary bg-clip-text text-transparent text-glow">
               Featured Projects
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Explore innovative solutions built during the TSI Hackathon
+              Explore innovative solutions built during the TSI Hackathon 2025
             </p>
           </div>
 
@@ -198,7 +198,7 @@ const Index = () => {
       </div>
 
       {/* Footer */}
-      <footer className="py-12 bg-card border-t border-border">
+      <footer className="py-12 border-t border-border">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-6">
             {/* TSI Logo + Brand */}
@@ -211,7 +211,7 @@ const Index = () => {
               <div className="flex items-center gap-2">
                 <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
                 <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
-                  TSI HACKATHON
+                  TSI HACKATHON 2025
                 </span>
               </div>
             </div>

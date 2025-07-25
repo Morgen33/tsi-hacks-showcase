@@ -27,7 +27,7 @@ export const Navigation = ({ onSubmitClick }: NavigationProps) => {
             />
             <div className="flex flex-col">
               <span className="text-lg font-bold bg-gradient-neon bg-clip-text text-transparent">
-                TSI HACKATHON
+                TSI HACKATHON 2025
               </span>
               <span className="text-xs text-muted-foreground -mt-1">
                 Project Directory
