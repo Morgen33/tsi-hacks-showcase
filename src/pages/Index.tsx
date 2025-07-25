@@ -58,7 +58,7 @@ const Index = () => {
             <div className="flex justify-center">
               <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-card/50 backdrop-blur-sm border border-neon-purple/30 shadow-lg">
                 <Zap className="w-6 h-6 text-neon-purple animate-pulse-glow" />
-                <span className="text-neon-purple font-bold text-xl tracking-wide">TSI HACKATHON 2025</span>
+                <span className="text-neon-purple font-bold text-xl tracking-wide bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent animate-pulse-glow">TSI HACKATHON 2025</span>
               </div>
             </div>
             
@@ -70,13 +70,13 @@ const Index = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button onClick={() => setShowForm(true)} variant="outline" className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground px-8 py-3 text-lg transition-all duration-300">
+              <Button onClick={() => setShowForm(true)} variant="outline" className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground px-8 py-3 text-lg transition-all duration-300 hover:shadow-neon-purple/30 hover:shadow-2xl">
                 <Code2 className="w-5 h-5 mr-2" />
                 Submit Your Project
               </Button>
               <Button variant="outline" onClick={() => document.getElementById('projects')?.scrollIntoView({
               behavior: 'smooth'
-            })} className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground px-8 py-3 text-lg transition-all duration-300">
+            })} className="border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-primary-foreground px-8 py-3 text-lg transition-all duration-300 hover:shadow-neon-purple/30 hover:shadow-2xl">
                 <Trophy className="w-5 h-5 mr-2" />
                 View Projects
               </Button>
@@ -164,7 +164,7 @@ const Index = () => {
               <img src="/lovable-uploads/ed720235-4972-4f7d-8bd2-2c1b207c3111.png" alt="TSI Logo" className="w-8 h-8 object-contain" />
               <div className="flex items-center gap-2">
                 
-                <span className="text-xl font-bold text-foreground">
+                <span className="text-xl font-bold text-foreground bg-gradient-to-r from-neon-purple to-neon-pink bg-clip-text text-transparent">
                   TSI HACKATHON 2025
                 </span>
               </div>
