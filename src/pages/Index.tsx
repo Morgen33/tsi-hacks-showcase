@@ -28,9 +28,10 @@ const Index = () => {
   const [showForm, setShowForm] = useState(false);
   const categories = [...new Set(projects.map(p => p.category))];
   const filteredProjects = selectedCategory === "all" ? projects : projects.filter(p => p.category === selectedCategory);
-  const handleSubmit = (submission: Omit<Project, "id">) => {
+  const handleSubmit = (submission: { name: string; siteUrl: string; description: string; categories: string[]; imageUrl?: string }) => {
     const newProject: Project = {
       ...submission,
+      category: submission.categories[0], // Use first category for display
       id: Date.now().toString()
     };
     setProjects([...projects, newProject]);

@@ -2,9 +2,9 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { Upload, X, Image as ImageIcon } from "lucide-react";
 
@@ -12,7 +12,7 @@ interface Submission {
   name: string;
   siteUrl: string;
   description: string;
-  category: string;
+  categories: string[];
   imageFile?: File;
   imageUrl?: string;
 }
@@ -41,7 +41,7 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
     name: "",
     siteUrl: "",
     description: "",
-    category: "",
+    categories: [],
   });
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,10 +75,19 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
     }
   };
 
+  const handleCategoryChange = (category: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      categories: checked 
+        ? [...prev.categories, category]
+        : prev.categories.filter(c => c !== category)
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.siteUrl || !formData.description || !formData.category) {
+    if (!formData.name || !formData.siteUrl || !formData.description || formData.categories.length === 0) {
       toast.error("Please fill in all required fields");
       return;
     }
@@ -88,7 +97,7 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
       name: "",
       siteUrl: "",
       description: "",
-      category: "",
+      categories: [],
     });
     setImagePreview(null);
     if (fileInputRef.current) {
@@ -133,22 +142,28 @@ export const SubmissionForm = ({ onSubmit }: SubmissionFormProps) => {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="category" className="text-foreground font-medium">
-              Category *
+          <div className="space-y-3">
+            <Label className="text-foreground font-medium">
+              Categories * (Select one or more)
             </Label>
-            <Select value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
-              <SelectTrigger className="bg-input border-border focus:border-neon-purple focus:ring-neon-purple">
-                <SelectValue placeholder="Select project category" />
-              </SelectTrigger>
-              <SelectContent className="bg-popover border-border">
-                {categories.map((category) => (
-                  <SelectItem key={category} value={category} className="focus:bg-accent">
+            <div className="grid grid-cols-2 gap-3">
+              {categories.map((category) => (
+                <div key={category} className="flex items-center space-x-2">
+                  <Checkbox
+                    id={category}
+                    checked={formData.categories.includes(category)}
+                    onCheckedChange={(checked) => handleCategoryChange(category, checked as boolean)}
+                    className="border-border data-[state=checked]:bg-neon-purple data-[state=checked]:border-neon-purple"
+                  />
+                  <Label
+                    htmlFor={category}
+                    className="text-sm text-foreground cursor-pointer"
+                  >
                     {category}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+                  </Label>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="space-y-2">
