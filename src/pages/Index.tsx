@@ -176,7 +176,7 @@ const Index = () => {
             </p>
             
             {/* Footer Links */}
-            <div className="flex items-center justify-center gap-6 text-sm">
+            <div className="flex items-center justify-center gap-6 text-sm flex-wrap">
               <Button variant="ghost" size="sm" onClick={() => document.getElementById('projects')?.scrollIntoView({
               behavior: 'smooth'
             })} className="text-muted-foreground hover:text-neon-purple transition-colors">
@@ -186,9 +186,27 @@ const Index = () => {
                 Submit Project
               </Button>
               <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-neon-purple transition-colors">
-                <a href="https://tsi.org" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/tsi_org" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-3 h-3 mr-1" />
                   Visit TSI
+                </a>
+              </Button>
+              <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-neon-purple transition-colors">
+                <a href="https://pixio.myapps.ai/" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                  Pixio
+                </a>
+              </Button>
+              <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-neon-purple transition-colors">
+                <a href="https://account.myapps.ai/" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                  AI Tutor
+                </a>
+              </Button>
+              <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-neon-purple transition-colors">
+                <a href="https://beta.machine.myapps.ai/" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                  The Machine
                 </a>
               </Button>
             </div>
